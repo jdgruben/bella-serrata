@@ -222,9 +222,51 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Mobile Menu
     mobileMenuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
         mobileMenuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
     });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-container') && navLinks.classList.contains('active')) {
+            mobileMenuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
+    });
+
+    // Improve scroll behavior for mobile
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling down
+            nav.style.transform = 'translateY(-100%)';
+        } else {
+            // Scrolling up
+            nav.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+
+    // Fix iOS Safari 100vh issue
+    function setVhVariable() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    window.addEventListener('load', setVhVariable);
+    window.addEventListener('resize', setVhVariable);
 
     // Form Submission
     if (rsvpForm && confirmationMsg) {
