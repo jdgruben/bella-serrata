@@ -276,12 +276,13 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                const navHeight = nav.offsetHeight;
-                const targetPos = target.getBoundingClientRect().top + window.pageYOffset;
-                window.scrollTo({
-                    top: targetPos - navHeight,
-                    behavior: 'smooth'
-                });
+                // Use scrollIntoView for better compatibility
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Offset for fixed nav after scroll
+                setTimeout(() => {
+                    const navHeight = nav.offsetHeight;
+                    window.scrollBy({ top: -navHeight, left: 0, behavior: 'instant' });
+                }, 400);
             }
             // Always close the mobile menu after navigation
             if (navLinks.classList.contains('active')) {
