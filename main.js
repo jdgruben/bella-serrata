@@ -570,7 +570,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const magnifier = document.createElement('div');
         magnifier.className = 'magnifier';
         document.body.appendChild(magnifier);
-        const zoom = 1.1;
+        const zoom = 1.5;
         hero.addEventListener('mousemove', e => {
             const rect = hero.getBoundingClientRect();
             const x = e.clientX - rect.left;
