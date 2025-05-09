@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Bella Serrata</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Audio Player (caché) -->
+    <audio id="ambientSound" autoplay muted loop preload="auto">
+        <source src="assets/ambient.mp3" type="audio/mp3">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+    
+    <!-- Bouton pour activer/désactiver le son -->
+    <button id="toggleAudio" class="audio-toggle">
+        <i class="fas fa-volume-mute"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">La Bella Serrata</div>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#top">Accueil</a></li>
+                <li><a href="#invitation">Invitation</a></li>
+                <li><a href="#rsvp">Réponse</a></li>
+                <li><a href="#adresse">Adresse</a></li>
+                <li><a href="#dress-code">Dress Code</a></li>
+                <li><a href="#photos">Photos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="top" class="hero">
+        <div class="hero-content">
+            <h1>La Bella Serrata</h1>
+            <div class="names">
+                <span>Alicia</span>
+                <span>Rosalie</span>
+                <span>Zoé</span>
+                <span>Pipaye</span>
+            </div>
+            <div class="date">02/08/2025</div>
+            <p class="tagline">Une soirée d'été à l'italienne</p>
+            <!-- CTA Button -->
+            <a href="#rsvp" class="cta-button">Répondez maintenant</a>
+        </div>
+    </section>
+
+    <!-- Invitation Section -->
+    <section id="invitation" class="section">
+        <div class="section-side-image right" style="background-image: url('assets/img_back/citrons nappes carreaux bleu.jpg')"></div>
+        <div class="container">
+            <div class="invitation-card">
+                <h2>Invitation</h2>
+                <div class="invitation-content">
+                    <p>M. et Mme … sont invités par Alicia, Rosalie et Zoé le samedi 2 août 2025 à 19h30.</p>
+                    <p class="invite-time">Dîner à 21h précises <i class="fas fa-cocktail limoncello-icon"></i> à la ferme de Bertinchamps</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="section">
+        <div class="section-side-image left" style="background-image: url('assets/img_back/maisons mer.jpg')"></div>
+        <div class="container">
+            <h2>Réponse</h2>
+            <form id="rsvpForm" class="rsvp-form">
+                <div class="form-group">
+                    <label for="nom" class="required">Nom</label>
+                    <input type="text" id="nom" name="nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="prenom" class="required">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="required">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label class="required">Présence</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="presence" value="oui" required>
+                            <i class="fas fa-cocktail" title="Oui"></i> <span>Oui</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="presence" value="non" required>
+                            <i class="fas fa-times" title="Non"></i> <span>Non</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="presence" value="23h" required>
+                            <i class="fas fa-clock" title="23h"></i> <span>23h</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message" class="required">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Envoyer</button>
+            </form>
+            <div id="confirmation" class="confirmation-message" style="display: none;">
+                Merci pour votre réponse !
+            </div>
+        </div>
+    </section>
+
+    <!-- Adresse Section -->
+    <section id="adresse" class="section">
+        <div class="section-side-image right" style="background-image: url('assets/img_back/maillots.jpg')"></div>
+        <div class="container">
+            <h2>Adresse du Jour</h2>
+            <div class="map-section">
+                <div class="map-container">
+                    <iframe
+                        src="https://maps.google.com/maps?q=Chem%20Bertinchamps%2051%2C%201421%20Braine-l%27Alleud%2C%20Belgique&z=15&output=embed"
+                        width="100%"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="map-info">
+                    <p>
+                        Ferme de Bertinchamps<br>
+                        Chem. Bertinchamps 51, 1421 Braine-l'Alleud, Belgique
+                    </p>
+                    <div class="map-buttons">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Chem.+Bertinchamps+51%2C+1421+Braine-l'%27Alleud%2C+Belgique" class="map-link" target="_blank">
+                        <i class="fas fa-map-marker-alt"></i> Voir sur Google Maps
+                    </a>
+                        <a href="https://waze.com/ul?q=Chem%20Bertinchamps%2051%2C%201421%20Braine-l%27Alleud" class="waze-link" target="_blank">
+                            <i class="fab fa-waze"></i> Ouvrir dans Waze
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dress Code Section -->
+    <section id="dress-code" class="section">
+        <div class="container">
+            <h2>Dress Code</h2>
+            <div id="gallery" class="gallery-grid" data-images="45"></div>
+            <p class="dress-code-quote">"Vivi e lascia vivere."</p>
+        </div>
+    </section>
+
+    <!-- Photos Section -->
+    <section id="photos" class="section">
+        <div class="container">
+            <h2>Photos</h2>
+            <p class="photos-message">Les photos seront disponibles après la soirée.</p>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html> 
