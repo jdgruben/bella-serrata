@@ -402,15 +402,8 @@ h2.visible {
 
 /* Invitation section background */
 #invitation.section {
-    background-image: linear-gradient(rgba(255,247,230,0.92), rgba(255,247,230,0.92)), url('assets/img_back/citrons nappes carreaux bleu.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 2rem 1rem;
+    background: none !important;
+    background-image: none !important;
 }
 
 /* Limoncello icon hover */
@@ -750,8 +743,8 @@ textarea {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    padding: 1.5rem;
+    gap: 0.7rem;
+    padding: 1rem;
     background: var(--background-color);
     border-radius: 8px;
 }
@@ -759,7 +752,7 @@ textarea {
 .map-info p {
     font-size: 1.2rem;
     color: var(--text-color);
-    margin-bottom: 1rem;
+    margin-bottom: 0.7rem;
     font-style: italic;
 }
 
@@ -791,8 +784,8 @@ textarea {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 0.7rem;
+    margin-top: 0.7rem;
 }
 
 /* Equal width for both map and Waze buttons */
@@ -864,18 +857,10 @@ textarea {
         overflow-x: hidden;
     }
     .hero {
-        min-height: 100vh !important;
-        height: 100vh !important;
-        width: 100vw !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        border: none !important;
-        box-sizing: border-box;
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
+        background-image: url('assets/img_back/Designfinal_bellaserata_mobile.jpg') !important;
+        background-size: cover !important;
+        background-position: 60% center !important;
+        background-repeat: no-repeat !important;
     }
     /* Remove top margin from the section after hero */
     .hero + .section {
@@ -998,48 +983,18 @@ textarea {
 
     /* Fix invitation card */
     .invitation-card {
-        background: var(--background-color) !important;
-        backdrop-filter: blur(4px);
-        border-radius: 14px;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-        padding: 1.5rem 1rem !important;
-        max-width: 95vw;
-        margin: 2rem auto !important;
-        position: relative;
-        display: block;
+        background: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        max-width: 100vw !important;
+        margin: 0 !important;
+        backdrop-filter: none !important;
     }
     .invitation-content {
-        text-align: center;
-        padding: 0.5em 0.2em !important;
-        font-size: 1.08rem;
-        line-height: 1.6;
-        color: var(--text-color);
+        padding: 0 !important;
         background: none !important;
-        margin: 0 auto;
-        max-width: 90vw;
-        word-break: break-word;
-    }
-    .invitation-content .inv-block {
-        display: block;
-        margin: 0.5em 0;
-    }
-    .invitation-content .inv-lastline {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        font-size: 1.05rem;
-        margin-top: 1em;
-    }
-    .invitation-content .inv-lastline span {
-        flex: 1;
-    }
-    .invitation-content .inv-lastline .left {
-        text-align: left;
-    }
-    .invitation-content .inv-lastline .right {
-        text-align: right;
-        font-style: italic;
+        box-shadow: none !important;
     }
 
     /* Fix RSVP form */
@@ -1119,34 +1074,27 @@ textarea {
 
     /* Invitation section background */
     #invitation.section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        padding: 2rem 1rem;
+        margin-top: -1.6cm !important;
+        position: relative;
+        z-index: 10;
+        background-image: linear-gradient(rgba(255,247,230,0.92), rgba(255,247,230,0.92)), url('assets/img_back/citrons nappes carreaux bleu.jpg') !important;
+        background-size: cover !important;
+        background-position: center calc(0% - 1.6cm) !important;
+        background-repeat: no-repeat !important;
     }
     .invitation-card {
-        background: var(--background-color) !important;
-        backdrop-filter: blur(4px);
-        border-radius: 14px;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-        padding: 1.5rem 1rem !important;
-        max-width: 95vw;
-        margin: 2rem auto !important;
-        position: relative;
-        display: block;
-        width: 100%;
+        background: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        max-width: 100vw !important;
+        margin: 0 !important;
+        backdrop-filter: none !important;
     }
     .invitation-content {
-        text-align: center;
-        padding: 0.5em 0.2em !important;
-        font-size: 1.08rem;
-        line-height: 1.6;
-        color: var(--text-color);
+        padding: 0 !important;
         background: none !important;
-        margin: 0 auto;
-        max-width: 90vw;
-        word-break: break-word;
+        box-shadow: none !important;
     }
 
     /* RSVP section background */
@@ -1183,6 +1131,20 @@ textarea {
         width: 100%;
         padding: 0.8rem;
         text-align: center;
+    }
+
+    .scroll-progress {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 0;
+        height: 4px !important;
+        background: var(--primary-color) !important;
+        z-index: 2000 !important;
+        transition: width 0.25s ease-out;
+        display: block !important;
+        opacity: 1 !important;
+        pointer-events: none;
     }
 }
 
