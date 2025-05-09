@@ -801,10 +801,41 @@ textarea {
         margin: 0;
     }
 
-    /* Fix hero section */
+    /* Show nav-links by default and hide hamburger menu */
+    .nav-links {
+        display: flex !important;
+        position: static !important;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background: none !important;
+        padding: 0.5rem 0;
+        gap: 1rem;
+        transform: none !important;
+        height: auto !important;
+        box-shadow: none !important;
+    }
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 0.8rem 0;
+    }
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+
+    /* Hero image: show full image, no cropping */
     .hero {
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+        background-position: center center !important;
         height: 100vh;
-        min-height: -webkit-fill-available;
+        min-height: 100vw;
+        width: 100vw;
         padding: 0;
         margin: 0;
         display: flex;
@@ -845,48 +876,6 @@ textarea {
     .tagline {
         font-size: 1rem;
         margin: 0.5rem 0;
-    }
-
-    /* Fix navigation */
-    .main-nav {
-        height: 60px;
-        background: rgba(255, 247, 230, 0.98);
-    }
-
-    .nav-container {
-        padding: 0 1rem;
-        height: 100%;
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        height: auto;
-        background: rgba(255, 247, 230, 0.98);
-        padding: 1rem;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        transform: translateY(-150%);
-        transition: transform 0.3s ease-in-out;
-        z-index: 1000;
-    }
-
-    .nav-links.active {
-        transform: translateY(0);
-    }
-
-    .nav-links li {
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav-links a {
-        display: block;
-        padding: 0.8rem;
-        width: 100%;
     }
 
     /* Fix sections */

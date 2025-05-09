@@ -558,7 +558,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Magnifier Lens for Hero Background
     const hero = document.querySelector('.hero');
-    if (hero) {
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (hero && !isTouchDevice) {
         const magnifier = document.createElement('div');
         magnifier.className = 'magnifier';
         document.body.appendChild(magnifier);
