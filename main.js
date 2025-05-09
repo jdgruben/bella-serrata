@@ -34,97 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
     progressBar.className = 'scroll-progress';
     document.body.appendChild(progressBar);
 
-    // Loading Animation
-    const loading = document.createElement('div');
-    loading.className = 'loading';
-    loading.innerHTML = '<div class="loading-spinner"></div>';
-    document.body.appendChild(loading);
-
-    // Essayer de jouer l'audio automatiquement de plusieurs façons
-    // Fonction plus agressive pour lancer l'audio automatiquement
-    async function forcePlayAudio() {
-        if (!ambientSound) return;
-        
-        try {
-            // Régler le volume bas au départ pour éviter de surprendre l'utilisateur
-            ambientSound.volume = 0.3;
-            // Unmute the audio that starts muted to bypass autoplay restrictions
-            ambientSound.muted = false;
-            
-            // Essayer de jouer l'audio avec la méthode standard
-            await ambientSound.play();
-            console.log('Autoplay successful!');
-            isAudioPlaying = true;
-            
-            // Mettre à jour l'icône si la lecture réussit
-            if (audioToggle) {
-                audioToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
-            }
-            
-            // Augmenter progressivement le volume
-            let currentVolume = 0.3;
-            const fadeIn = setInterval(() => {
-                if (currentVolume < 0.8) {
-                    currentVolume += 0.1;
-                    ambientSound.volume = currentVolume;
-                } else {
-                    clearInterval(fadeIn);
-                }
-            }, 700);
-            
-        } catch (error) {
-            console.log('Autoplay prevented by browser:', error);
-            // Les navigateurs modernes exigent une interaction utilisateur
-            // Nous essaierons de nouveau lors de la première interaction
-            setupAutoplayOnInteraction();
-        }
-    }
-    
-    // Tente de jouer l'audio dès la première interaction avec la page
-    function setupAutoplayOnInteraction() {
-        const playAudioOnce = () => {
-            if (!isAudioPlaying && ambientSound) {
-                ambientSound.play()
-                    .then(() => {
-                        isAudioPlaying = true;
-                        if (audioToggle) {
-                            audioToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
-                        }
-                        console.log('Audio started on user interaction');
-                    })
-                    .catch(err => console.log('Still cannot play audio:', err));
-            }
-            
-            // Retirer les écouteurs d'événements après la première tentative
-            document.removeEventListener('click', playAudioOnce);
-            document.removeEventListener('touchstart', playAudioOnce);
-            document.removeEventListener('keydown', playAudioOnce);
-            document.removeEventListener('scroll', playAudioOnce);
-        };
-        
-        // Ajouter des écouteurs pour différents types d'interactions
-        document.addEventListener('click', playAudioOnce);
-        document.addEventListener('touchstart', playAudioOnce);
-        document.addEventListener('keydown', playAudioOnce);
-        document.addEventListener('scroll', playAudioOnce);
-    }
-
-    window.addEventListener('load', () => {
-        loading.classList.add('hidden');
-        setTimeout(() => {
-            loading.remove();
-            // Try playing audio after loading animation is gone
-            forcePlayAudio();
-        }, 500);
-    });
-
-    // Essayer également quand la page devient visible
-    document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible' && !isAudioPlaying) {
-            forcePlayAudio();
-        }
-    });
-
     // Audio toggle button
     if (audioToggle && ambientSound) {
         audioToggle.addEventListener('click', async () => {
@@ -220,26 +129,39 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Mobile Menu
-    mobileMenuToggle.addEventListener('click', () => {
+    // Mobile menu functionality
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    function toggleMenu() {
         mobileMenuToggle.classList.toggle('active');
         navLinks.classList.toggle('active');
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+    }
+
+    mobileMenuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
     });
 
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenuToggle.classList.remove('active');
-            navLinks.classList.remove('active');
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('active') && !e.target.closest('.nav-links') && !e.target.closest('.mobile-menu-toggle')) {
+            toggleMenu();
+        }
+    });
+
+    // Close menu when clicking a link
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
         });
     });
 
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.nav-container') && navLinks.classList.contains('active')) {
-            mobileMenuToggle.classList.remove('active');
-            navLinks.classList.remove('active');
-        }
+    // Prevent menu from closing when clicking inside
+    navLinks.addEventListener('click', (e) => {
+        e.stopPropagation();
     });
 
     // Improve scroll behavior for mobile
