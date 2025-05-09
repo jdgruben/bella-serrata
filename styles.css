@@ -602,8 +602,20 @@ textarea {
     font-size: 1.2rem;
     transition: color 0.3s ease, transform 0.3s ease;
 }
-.radio-group input[type="radio"]:checked + i {
-    color: var(--lemon);
+.radio-group input[type="radio"][value="non"]:checked + i {
+    color: #e74c3c !important; /* red */
+    transform: scale(1.2);
+}
+
+/* Keep the yellow for 'oui' */
+.radio-group input[type="radio"][value="oui"]:checked + i {
+    color: var(--lemon) !important;
+    transform: scale(1.2);
+}
+
+/* Keep the default for 23h */
+.radio-group input[type="radio"][value="23h"]:checked + i {
+    color: var(--lemon) !important;
     transform: scale(1.2);
 }
 
@@ -790,6 +802,32 @@ textarea {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    html, body {
+        padding: 0 !important;
+        margin: 0 !important;
+        height: 100%;
+        width: 100vw;
+        overflow-x: hidden;
+    }
+    .hero {
+        min-height: 100vh !important;
+        height: 100vh !important;
+        width: 100vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-sizing: border-box;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+    /* Remove top margin from the section after hero */
+    .hero + .section {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
     /* Hamburger menu visible, nav-links hidden by default */
     .mobile-menu-toggle {
         display: block !important;
