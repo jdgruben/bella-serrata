@@ -329,11 +329,11 @@ h2.visible {
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
-    font-size: 1.2rem;
+    font-size: 1.12rem;
     color: var(--text-color);
     background: none;
     padding: 0;
-    line-height: 1.5;
+    line-height: 1.7;
 }
 
 .map-link {
@@ -352,18 +352,65 @@ h2.visible {
 .invitation-card {
     background: var(--background-color) !important;
     backdrop-filter: blur(4px);
-    border-radius: 8px;
-    padding: 2rem;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-    max-width: 800px;
-    margin: 2rem auto;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    padding: 2.5rem 1.5rem !important;
+    max-width: 95vw;
+    margin: 2rem auto !important;
     position: relative;
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+    display: block;
 }
+
 .invitation-content {
-    color: #000 !important;
+    text-align: center;
+    padding: 0.5em 0.2em !important;
+    font-size: 1.18rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    background: none !important;
+    margin: 0 auto;
+    max-width: 90vw;
+    word-break: break-word;
+}
+
+.invitation-content .inv-block {
+    display: block;
+    margin: 0.5em 0;
+}
+
+.invitation-content .inv-lastline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 1.05rem;
+    margin-top: 1em;
+}
+
+.invitation-content .inv-lastline span {
+    flex: 1;
+}
+
+.invitation-content .inv-lastline .left {
+    text-align: left;
+}
+
+.invitation-content .inv-lastline .right {
+    text-align: right;
+    font-style: italic;
+}
+
+/* Invitation section background */
+#invitation.section {
+    background-image: linear-gradient(rgba(255,247,230,0.92), rgba(255,247,230,0.92)), url('assets/img_back/citrons nappes carreaux bleu.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem 1rem;
 }
 
 /* Limoncello icon hover */
@@ -951,9 +998,9 @@ textarea {
 
     /* Fix invitation card */
     .invitation-card {
-        background: rgba(255,255,255,0.92) !important;
+        background: var(--background-color) !important;
         backdrop-filter: blur(4px);
-        border-radius: 12px;
+        border-radius: 14px;
         box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         padding: 1.5rem 1rem !important;
         max-width: 95vw;
@@ -971,6 +1018,28 @@ textarea {
         margin: 0 auto;
         max-width: 90vw;
         word-break: break-word;
+    }
+    .invitation-content .inv-block {
+        display: block;
+        margin: 0.5em 0;
+    }
+    .invitation-content .inv-lastline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        font-size: 1.05rem;
+        margin-top: 1em;
+    }
+    .invitation-content .inv-lastline span {
+        flex: 1;
+    }
+    .invitation-content .inv-lastline .left {
+        text-align: left;
+    }
+    .invitation-content .inv-lastline .right {
+        text-align: right;
+        font-style: italic;
     }
 
     /* Fix RSVP form */
@@ -1050,30 +1119,36 @@ textarea {
 
     /* Invitation section background */
     #invitation.section {
-        background-image: linear-gradient(rgba(255,247,230,0.92), rgba(255,247,230,0.92)), url('assets/img_back/citrons nappes carreaux bleu.jpg');
-    }
-    .invitation-content, .invitation-card {
-        color: unset !important;
-        background: unset !important;
-        z-index: unset !important;
-        border: unset !important;
-        position: unset !important;
-        display: unset !important;
-        visibility: unset !important;
-        padding: unset !important;
-        font-size: unset !important;
-        line-height: unset !important;
-        box-shadow: unset !important;
-        max-width: unset !important;
-        margin: unset !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 2rem 1rem;
     }
     .invitation-card {
-        background: none !important;
-        box-shadow: none !important;
-        padding: 0.5em 0 0.5em 0 !important;
-        display: block !important;
-        visibility: visible !important;
+        background: var(--background-color) !important;
+        backdrop-filter: blur(4px);
+        border-radius: 14px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        padding: 1.5rem 1rem !important;
+        max-width: 95vw;
+        margin: 2rem auto !important;
+        position: relative;
+        display: block;
+        width: 100%;
     }
+    .invitation-content {
+        text-align: center;
+        padding: 0.5em 0.2em !important;
+        font-size: 1.08rem;
+        line-height: 1.6;
+        color: var(--text-color);
+        background: none !important;
+        margin: 0 auto;
+        max-width: 90vw;
+        word-break: break-word;
+    }
+
     /* RSVP section background */
     #rsvp.section {
         background-image: linear-gradient(rgba(255,247,230,0.85), rgba(255,247,230,0.85)), url('assets/img_back/maisons mer.jpg');
@@ -1406,4 +1481,30 @@ label.required::after {
     bottom: 0;
     background-repeat: no-repeat;
     /* background-size and position set dynamically in JS */
+}
+
+.invitation-names {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35em;
+    margin: 1em 0;
+    align-items: center;
+}
+.invitation-names span {
+    display: block;
+    margin: 0.2em 0;
+}
+
+@media (max-width: 500px) {
+  .invitation-card {
+    max-width: 390px;
+    max-height: 700px;
+    padding: 1.2rem 0.7rem !important;
+    overflow-y: auto;
+    margin: 1rem auto !important;
+  }
+  .invitation-content {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
 }
