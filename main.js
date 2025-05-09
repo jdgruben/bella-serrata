@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     {
                         to_name: `${data.prenom} ${data.nom}`,
                         to_email: data.email,
-                        from_name: "La Bella Serrata",
+                        from_name: "La Bella Serata",
                         nom: data.nom,
                         prenom: data.prenom,
                         presence: data.presence,
@@ -306,14 +306,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                // Smooth fade-in and upward movement for all sections
+                if (typeof gsap !== 'undefined') {
+                    gsap.to(entry.target, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1.1,
+                        ease: 'power2.out',
+                    });
+                } else {
+                    entry.target.classList.add('visible');
+                }
                 sectionObserver.unobserve(entry.target);
-                
-                // Si la section Dress Code est visible, animer la citation
-                if (entry.target.id === 'dress-code' && dressCodeQuote) {
+
+                // Dress Code section: fade in gallery items with stagger
+                if (entry.target.id === 'dress-code') {
                     setTimeout(() => {
-                        dressCodeQuote.classList.add('visible');
-                    }, 1500); // Délai pour que la galerie apparaisse d'abord
+                        if (typeof gsap !== 'undefined') {
+                            const galleryItems = entry.target.querySelectorAll('.gallery-item');
+                            gsap.fromTo(galleryItems, {
+                                opacity: 0,
+                                y: 40
+                            }, {
+                                opacity: 1,
+                                y: 0,
+                                duration: 0.9,
+                                stagger: 0.08,
+                                ease: 'power2.out',
+                            });
+                        }
+                        if (dressCodeQuote) {
+                            dressCodeQuote.classList.add('visible');
+                        }
+                    }, 500);
                 }
             }
         });
@@ -323,9 +348,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const headingsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                if (typeof gsap !== 'undefined') {
+                    gsap.to(entry.target, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1.1,
+                        ease: 'power2.out',
+                    });
+                } else {
+                    entry.target.classList.add('visible');
+                }
                 headingsObserver.unobserve(entry.target);
-                
+
                 // Animate form groups if this heading belongs to the RSVP section
                 if (entry.target.closest('#rsvp')) {
                     animateFormGroups();
