@@ -583,4 +583,23 @@ document.addEventListener('DOMContentLoaded', function() {
             magnifier.style.display = 'none';
         });
     }
+
+    // --- Ensure music starts on first user interaction (mobile/desktop) ---
+    if (ambientSound) {
+        const tryPlayAudio = () => {
+            ambientSound.muted = false;
+            ambientSound.volume = 0.8;
+            ambientSound.play().then(() => {
+                isAudioPlaying = true;
+                if (audioToggle) {
+                    audioToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+                }
+            }).catch(() => {});
+            // Remove listeners after first interaction
+            document.removeEventListener('click', tryPlayAudio);
+            document.removeEventListener('touchstart', tryPlayAudio);
+        };
+        document.addEventListener('click', tryPlayAudio);
+        document.addEventListener('touchstart', tryPlayAudio);
+    }
 });
