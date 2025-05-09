@@ -1026,10 +1026,23 @@ textarea {
 
     /* Invitation section background */
     #invitation.section {
-        background-image: linear-gradient(rgba(255,247,230,0.85), rgba(255,247,230,0.85)), url('assets/img_back/citrons nappes carreaux bleu.jpg');
+        background-image: linear-gradient(rgba(255,247,230,0.97), rgba(255,247,230,0.97)), url('assets/img_back/citrons nappes carreaux bleu.jpg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+    }
+    .invitation-content {
+        color: #3a3a3a !important;
+        background: none !important;
+        padding: 1.2em 0.5em 1em 0.5em !important;
+        font-size: 1.05rem;
+        line-height: 1.5;
+        text-shadow: 0 1px 2px rgba(255,255,255,0.2);
+    }
+    .invitation-card {
+        background: none !important;
+        box-shadow: none !important;
+        padding: 0.5em 0 0.5em 0 !important;
     }
     /* RSVP section background */
     #rsvp.section {
