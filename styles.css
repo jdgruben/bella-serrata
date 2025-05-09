@@ -274,16 +274,16 @@ h1, h2, h3 {
 .section {
     padding: 5rem 2rem;
     position: relative;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
     overflow: hidden;
     scroll-snap-align: start;
 }
 
 .section.visible {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1 !important;
+    transform: none !important;
 }
 
 .container {
@@ -330,6 +330,10 @@ h2.visible {
     max-width: 800px;
     margin: 0 auto;
     font-size: 1.2rem;
+    color: var(--text-color);
+    background: none;
+    padding: 0;
+    line-height: 1.5;
 }
 
 .map-link {
@@ -346,7 +350,7 @@ h2.visible {
 
 /* Section Invitation Card */
 .invitation-card {
-    background: rgba(255,255,255,0.95);
+    background: var(--background-color) !important;
     backdrop-filter: blur(4px);
     border-radius: 8px;
     padding: 2rem;
@@ -354,13 +358,12 @@ h2.visible {
     max-width: 800px;
     margin: 2rem auto;
     position: relative;
-    opacity: 0;
-    transform: translateX(-40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
 }
-.section.visible .invitation-card {
-    opacity: 1;
-    transform: translateX(0);
+.invitation-content {
+    color: #000 !important;
 }
 
 /* Limoncello icon hover */
@@ -537,14 +540,14 @@ h2.visible {
 
 /* Section RSVP */
 .rsvp-form {
-    background: rgba(255,255,255,0.35);
-    backdrop-filter: blur(8px);
-    border-radius: 12px;
+    background: var(--background-color) !important;
+    backdrop-filter: blur(4px);
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
     padding: 2rem;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    width: 90%;
     max-width: 800px;
     margin: 2rem auto;
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -672,10 +675,14 @@ textarea {
     flex-direction: row;
     align-items: flex-start;
     gap: 2rem;
-    background: white;
+    background: var(--background-color) !important;
+    backdrop-filter: blur(4px);
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
     padding: 2rem;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
+    max-width: 800px;
+    margin: 2rem auto;
+    position: relative;
 }
 
 .map-container {
@@ -1026,23 +1033,26 @@ textarea {
 
     /* Invitation section background */
     #invitation.section {
-        background-image: linear-gradient(rgba(255,247,230,0.97), rgba(255,247,230,0.97)), url('assets/img_back/citrons nappes carreaux bleu.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+        background-image: linear-gradient(rgba(255,247,230,0.92), rgba(255,247,230,0.92)), url('assets/img_back/citrons nappes carreaux bleu.jpg');
     }
     .invitation-content {
-        color: #3a3a3a !important;
-        background: none !important;
-        padding: 1.2em 0.5em 1em 0.5em !important;
-        font-size: 1.05rem;
+        color: #000 !important;
+        background: #fff !important;
+        z-index: 10000 !important;
+        border: 2px solid red !important;
+        position: relative !important;
+        display: block !important;
+        visibility: visible !important;
+        padding: 1.5em 1em !important;
+        font-size: 1.1rem;
         line-height: 1.5;
-        text-shadow: 0 1px 2px rgba(255,255,255,0.2);
     }
     .invitation-card {
         background: none !important;
         box-shadow: none !important;
         padding: 0.5em 0 0.5em 0 !important;
+        display: block !important;
+        visibility: visible !important;
     }
     /* RSVP section background */
     #rsvp.section {
@@ -1342,12 +1352,13 @@ label.required::after {
 /* Refined subtle stripes for Dress Code section */
 #dress-code {
     background-color: var(--cream);
-    /* stronger, yet still subtle tablecloth pattern */
-    background-image: repeating-linear-gradient(
-        to right,
-        rgba(243,212,126,0.22) 0 30px,
-        transparent 30px 60px
-    );
+    background-image:
+        linear-gradient(to bottom, var(--cream) 0%, rgba(255,247,230,0.01) 10%, rgba(255,247,230,0.01) 90%, var(--cream) 100%),
+        repeating-linear-gradient(
+            to right,
+            rgba(243,212,126,0.22) 0 30px,
+            transparent 30px 60px
+        );
     background-repeat: repeat;
     transition: background 0.6s ease;
 }
