@@ -981,32 +981,39 @@ textarea {
         height: 150px;
     }
 
-    /* Fix side images */
+    /* Hide side images on mobile */
     .section-side-image {
-        display: block !important;
-        position: absolute;
-        width: 40vw;
-        min-width: 120px;
-        max-width: 180px;
-        height: 40vw;
-        min-height: 120px;
-        max-height: 180px;
-        opacity: 0.7;
-        z-index: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+        display: none !important;
     }
-    .section-side-image.left {
-        left: -10vw;
+
+    /* Invitation section background */
+    #invitation.section {
+        background-image: linear-gradient(rgba(255,247,230,0.85), rgba(255,247,230,0.85)), url('assets/img_back/citrons nappes carreaux bleu.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
-    .section-side-image.right {
-        right: -10vw;
+    /* RSVP section background */
+    #rsvp.section {
+        background-image: linear-gradient(rgba(255,247,230,0.85), rgba(255,247,230,0.85)), url('assets/img_back/maisons mer.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
-    .section .container {
-        position: relative;
-        z-index: 1;
+    /* Adresse section background */
+    #adresse.section {
+        background-image: linear-gradient(rgba(255,247,230,0.85), rgba(255,247,230,0.85)), url('assets/img_back/maillots.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
+    /* Dress Code section background (if needed, add a relevant image) */
+    /* #dress-code.section {
+        background-image: linear-gradient(rgba(255,247,230,0.85), rgba(255,247,230,0.85)), url('assets/img_back/your_dresscode_image.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    } */
 
     /* Fix headings */
     h2 {
