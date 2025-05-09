@@ -1035,17 +1035,20 @@ textarea {
     #invitation.section {
         background-image: linear-gradient(rgba(255,247,230,0.92), rgba(255,247,230,0.92)), url('assets/img_back/citrons nappes carreaux bleu.jpg');
     }
-    .invitation-content {
-        color: #000 !important;
-        background: #fff !important;
-        z-index: 10000 !important;
-        border: 2px solid red !important;
-        position: relative !important;
-        display: block !important;
-        visibility: visible !important;
-        padding: 1.5em 1em !important;
-        font-size: 1.1rem;
-        line-height: 1.5;
+    .invitation-content, .invitation-card {
+        color: unset !important;
+        background: unset !important;
+        z-index: unset !important;
+        border: unset !important;
+        position: unset !important;
+        display: unset !important;
+        visibility: unset !important;
+        padding: unset !important;
+        font-size: unset !important;
+        line-height: unset !important;
+        box-shadow: unset !important;
+        max-width: unset !important;
+        margin: unset !important;
     }
     .invitation-card {
         background: none !important;
