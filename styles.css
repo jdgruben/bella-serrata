@@ -951,9 +951,26 @@ textarea {
 
     /* Fix invitation card */
     .invitation-card {
-        width: 100%;
-        margin: 1rem 0;
-        padding: 1.5rem;
+        background: rgba(255,255,255,0.92) !important;
+        backdrop-filter: blur(4px);
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        padding: 1.5rem 1rem !important;
+        max-width: 95vw;
+        margin: 2rem auto !important;
+        position: relative;
+        display: block;
+    }
+    .invitation-content {
+        text-align: center;
+        padding: 0.5em 0.2em !important;
+        font-size: 1.08rem;
+        line-height: 1.6;
+        color: var(--text-color);
+        background: none !important;
+        margin: 0 auto;
+        max-width: 90vw;
+        word-break: break-word;
     }
 
     /* Fix RSVP form */
