@@ -66,7 +66,7 @@ h1, h2, h3 {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(255,247,230,0.95);
+    background-color: #0879B0;
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow);
     z-index: 1000;
@@ -90,10 +90,9 @@ h1, h2, h3 {
 }
 
 .logo {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Adelia', serif;
     font-size: 1.5rem;
-    color: var(--primary-color);
-    font-style: italic;
+    color: #FFFFFF;
     transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1),
                 color 0.3s ease;
     position: relative;
@@ -106,7 +105,7 @@ h1, h2, h3 {
     left: 0;
     width: 100%;
     height: 2px;
-    background: var(--gradient);
+    background: var(--lemon);
     transform: scaleX(0);
     transition: var(--transition);
 }
@@ -126,19 +125,19 @@ h1, h2, h3 {
 }
 
 .nav-links a {
+    font-family: 'Adelia', serif;
     text-decoration: none;
-    color: var(--olive);
+    color: #FFFFFF;
     font-weight: 500;
     transition: color 0.3s cubic-bezier(0.19, 1, 0.22, 1);
     position: relative;
     padding: 0.5rem 0;
     opacity: 0.9;
-    font-family: 'Montserrat', sans-serif;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-    color: var(--terracotta);
+    color: var(--lemon);
 }
 
 /* Sliding underline */
@@ -171,7 +170,7 @@ h1, h2, h3 {
     display: block;
     width: 25px;
     height: 2px;
-    background-color: var(--olive);
+    background-color: #FFFFFF;
     margin: 5px 0;
     transition: var(--transition);
 }
@@ -855,22 +854,77 @@ textarea {
         height: 100%;
         width: 100vw;
         overflow-x: hidden;
+        background-color: transparent !important;
     }
+    
+    /* Remove body sand background */
+    body::before {
+        display: none !important;
+    }
+    
     .hero {
         background-image: url('assets/img_back/Designfinal_bellaserata_mobile.jpg') !important;
         background-size: cover !important;
         background-position: 60% center !important;
         background-repeat: no-repeat !important;
     }
-    /* Remove top margin from the section after hero */
+    
+    /* Change header/nav background to blue */
+    .main-nav {
+        background-color: #0879B0 !important;
+        backdrop-filter: none;
+        height: 65px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    
+    /* Additional nav container adjustments */
+    .nav-container {
+        padding: 0 1.2rem !important;
+        align-items: center !important;
+        height: 100% !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+    }
+
+    /* Use Adelia font for logo */
+    .logo {
+        color: #FFFFFF !important;
+        font-family: 'Adelia', serif !important;
+        font-size: 1.4rem !important;
+        line-height: 1 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    
+    /* Remove hero overlay/filter */
+    .hero::after {
+        display: none !important;
+    }
+
+    /* Hero + section fix */
     .hero + .section {
         margin-top: 0 !important;
         padding-top: 0 !important;
     }
+    
     /* Hamburger menu visible, nav-links hidden by default */
     .mobile-menu-toggle {
-        display: block !important;
+        display: flex !important;
+        align-items: center !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
+
+    .mobile-menu-toggle span {
+        background-color: #FFFFFF !important;
+    }
+    
+    /* Change nav links to white when menu is open */
     .nav-links {
         display: flex;
         flex-direction: column;
@@ -879,7 +933,7 @@ textarea {
         top: 60px;
         left: 0;
         width: 100vw;
-        background: rgba(255, 247, 230, 0.98);
+        background: #0879B0 !important;
         padding: 1.5rem 0;
         gap: 1.2rem;
         transform: translateY(-150%);
@@ -888,17 +942,27 @@ textarea {
         box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         height: auto;
     }
+    
     .nav-links.active {
         transform: translateY(0);
     }
+    
     .nav-links li {
         width: 100%;
         text-align: center;
     }
+    
     .nav-links a {
         display: block;
         width: 100%;
         padding: 0.8rem 0;
+        color: #FFFFFF !important;
+        font-family: 'Adelia', serif !important;
+    }
+    
+    .nav-links a:hover, 
+    .nav-links a.active {
+        color: var(--lemon) !important;
     }
 
     /* Hero section: use untouched image, smart cropping, professional look */
@@ -1469,4 +1533,19 @@ label.required::after {
     font-size: 1rem;
     line-height: 1.5;
   }
+}
+
+/* Import Adelia font */
+@font-face {
+    font-family: 'Adelia';
+    src: url('adelia_3/adelia.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Title with Adelia font */
+.adelia-font {
+    font-family: 'Adelia', serif !important;
+    color: #0879B0 !important;
+    letter-spacing: 0.02em !important;
 }
