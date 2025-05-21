@@ -873,6 +873,15 @@ textarea {
 }
 
 /* Animation subtile pour le texte "Savoir s'éteindre" */
+.dress-code-subtitle {
+    text-align: center;
+    color: #0879B0;
+    font-size: 0.95rem;
+    font-style: italic;
+    margin: -1.8rem auto 2.2rem;
+    letter-spacing: 0.03em;
+}
+
 .dress-code-quote {
     text-align: center;
     font-style: italic;
@@ -1571,6 +1580,11 @@ label.required::after {
 @media (max-width: 768px) {
     #dress-code.section, #photos.section {
         padding-top: 4.5rem !important;
+    }
+    
+    .dress-code-subtitle {
+        margin: -1.2rem auto 1.8rem;
+        font-size: 0.85rem;
     }
 }
 
