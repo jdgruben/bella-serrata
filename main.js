@@ -250,11 +250,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Confirmation email sent successfully:', confirmationResponse);
 
                 // Afficher le message de succès
-                confirmationMsg.innerHTML = `Merci pour votre réponse !<br>Un mail de confirmation a été envoyé à ${data.email}.`;
+                confirmationMsg.innerHTML = `Merci pour votre réponse !<br>Un mail de confirmation a été envoyé à<br>${data.email}.`;
                 confirmationMsg.style.display = 'block';
                 
                 // Cacher le formulaire
                 rsvpForm.style.display = 'none';
+                
+                // Scroll to the confirmation message
+                setTimeout(() => {
+                    confirmationMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
                 
                 // Réinitialiser le formulaire pour une utilisation future
                 rsvpForm.reset();
@@ -280,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 // Offset for fixed nav after scroll
                 setTimeout(() => {
-                    const navHeight = nav.offsetHeight;
+                const navHeight = nav.offsetHeight;
                     window.scrollBy({ top: -navHeight, left: 0, behavior: 'instant' });
                 }, 400);
             }
@@ -315,10 +320,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         ease: 'power2.out',
                     });
                 } else {
-                    entry.target.classList.add('visible');
+                entry.target.classList.add('visible');
                 }
                 sectionObserver.unobserve(entry.target);
-
+                
                 // Dress Code section: fade in gallery items with stagger
                 if (entry.target.id === 'dress-code') {
                     setTimeout(() => {
@@ -336,7 +341,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             });
                         }
                         if (dressCodeQuote) {
-                            dressCodeQuote.classList.add('visible');
+                        dressCodeQuote.classList.add('visible');
                         }
                     }, 500);
                 }
@@ -356,10 +361,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         ease: 'power2.out',
                     });
                 } else {
-                    entry.target.classList.add('visible');
+                entry.target.classList.add('visible');
                 }
                 headingsObserver.unobserve(entry.target);
-
+                
                 // Animate form groups if this heading belongs to the RSVP section
                 if (entry.target.closest('#rsvp')) {
                     animateFormGroups();

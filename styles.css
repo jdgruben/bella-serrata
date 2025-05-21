@@ -34,6 +34,12 @@ body {
     scroll-snap-type: y proximity;
     scroll-padding-top: 60px;
 }
+
+@media (max-width: 768px) {
+    html, body {
+        scroll-padding-top: 65px;
+    }
+}
 body::before {
     content: '';
     position: fixed;
@@ -72,7 +78,7 @@ h1, h2, h3 {
     z-index: 1000;
     transition: var(--transition);
     height: 60px;
-    padding: 0.5rem 0;
+    padding: 0.3rem 0;
 }
 
 .main-nav.scrolled {
@@ -83,7 +89,7 @@ h1, h2, h3 {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 0.8rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -131,8 +137,9 @@ h1, h2, h3 {
     font-weight: 500;
     transition: color 0.3s cubic-bezier(0.19, 1, 0.22, 1);
     position: relative;
-    padding: 0.5rem 0;
+    padding: 0.4rem 0;
     opacity: 0.9;
+    line-height: 1.2;
 }
 
 .nav-links a:hover,
@@ -278,6 +285,7 @@ h1, h2, h3 {
     transition: none !important;
     overflow: hidden;
     scroll-snap-align: start;
+    margin: 0 !important;
 }
 
 .section.visible {
@@ -292,15 +300,23 @@ h1, h2, h3 {
     padding: 0 5%;
 }
 
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 0 1rem;
+        margin-top: 0;
+    }
+}
+
 h2 {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     color: var(--primary-color);
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     font-style: italic;
     position: relative;
-    padding-bottom: 1rem;
+    padding-bottom: 0.8rem;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1),
@@ -315,7 +331,13 @@ h2::after {
     transform: translateX(-50%);
     width: 60px;
     height: 2px;
-    background-color: var(--primary-color);
+    background-color: #0879B0;
+}
+
+/* Ensure the line under adelia-font titles matches the blue color */
+h2.adelia-font::after {
+    background-color: #0879B0 !important;
+    height: 3px !important;
 }
 
 h2.visible {
@@ -349,13 +371,13 @@ h2.visible {
 
 /* Section Invitation Card */
 .invitation-card {
-    background: var(--background-color) !important;
+    background: rgba(255, 255, 255, 0.85) !important;
     backdrop-filter: blur(4px);
     border-radius: 14px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.12);
     padding: 2.5rem 1.5rem !important;
     max-width: 95vw;
-    margin: 2rem auto !important;
+    margin: auto !important;
     position: relative;
     display: block;
 }
@@ -386,8 +408,24 @@ h2.visible {
     margin-top: 1em;
 }
 
+@media (max-width: 500px) {
+    .invitation-content .inv-lastline {
+        font-size: 0.85rem;
+        margin-top: 0.5em;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+    }
+}
+
 .invitation-content .inv-lastline span {
     flex: 1;
+}
+
+@media (max-width: 500px) {
+    .invitation-content .inv-lastline span {
+        white-space: nowrap !important;
+        overflow: visible !important;
+    }
 }
 
 .invitation-content .inv-lastline .left {
@@ -579,10 +617,10 @@ h2.visible {
 
 /* Section RSVP */
 .rsvp-form {
-    background: var(--background-color) !important;
-    backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.55) !important;
+    backdrop-filter: blur(2px);
     border-radius: 8px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
     padding: 2rem;
     max-width: 800px;
     margin: 2rem auto;
@@ -649,26 +687,26 @@ textarea {
     transform: scale(1.2);
 }
 
-/* Keep the yellow for 'oui' */
+/* Change to blue for 'oui' to match titles */
 .radio-group input[type="radio"][value="oui"]:checked + i {
-    color: var(--lemon) !important;
+    color: #0879B0 !important;
     transform: scale(1.2);
 }
 
-/* Keep the default for 23h */
+/* Keep yellow for 23h for both web and mobile */
 .radio-group input[type="radio"][value="23h"]:checked + i {
     color: var(--lemon) !important;
     transform: scale(1.2);
 }
 
 .submit-button {
-    background: var(--gradient);
+    background: #0879B0;
     color: white;
     border: none;
     padding: 1rem 2rem;
     border-radius: 8px;
     cursor: pointer;
-    font-family: inherit;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1),
                 box-shadow 0.4s cubic-bezier(0.19, 1, 0.22, 1),
@@ -676,11 +714,13 @@ textarea {
     position: relative;
     overflow: hidden;
     box-shadow: var(--shadow);
+    letter-spacing: 0.03em;
 }
 
 .submit-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 25px rgba(8, 121, 176, 0.3);
+    background-color: #0a8fd1;
 }
 
 .submit-button::after {
@@ -703,9 +743,12 @@ textarea {
 
 .confirmation-message {
     text-align: center;
-    color: var(--primary-color);
+    color: #0879B0;
     margin-top: 2rem;
     font-size: 1.2rem;
+    display: block;
+    width: 100%;
+    padding: 1rem;
 }
 
 /* Section Adresse */
@@ -714,7 +757,7 @@ textarea {
     flex-direction: row;
     align-items: flex-start;
     gap: 2rem;
-    background: var(--background-color) !important;
+    background: rgba(255, 255, 255, 0.85) !important;
     backdrop-filter: blur(4px);
     border-radius: 8px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.1);
@@ -744,7 +787,7 @@ textarea {
     flex-direction: column;
     gap: 0.7rem;
     padding: 1rem;
-    background: var(--background-color);
+    background: rgba(255, 255, 255, 0.85);
     border-radius: 8px;
 }
 
@@ -911,17 +954,34 @@ textarea {
         padding-top: 0 !important;
     }
     
+    /* Ensure no white gap between sections on mobile */
+    #invitation.section {
+        padding-bottom: 8rem !important;
+        margin-bottom: -8rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        min-height: calc(100vh - 65px) !important; /* Full viewport height minus mobile menu bar */
+    }
+    
     /* Hamburger menu visible, nav-links hidden by default */
     .mobile-menu-toggle {
         display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
         align-items: center !important;
-        height: 100% !important;
+        height: 24px !important;
         margin: 0 !important;
         padding: 0 !important;
     }
 
     .mobile-menu-toggle span {
+        display: block !important;
+        width: 25px !important;
+        height: 3px !important;
         background-color: #FFFFFF !important;
+        margin: 0 !important;
+        border-radius: 1px !important;
     }
     
     /* Change nav links to white when menu is open */
@@ -986,7 +1046,7 @@ textarea {
         content: '';
         position: absolute;
         left: 0; right: 0; top: 0; bottom: 0;
-        background: linear-gradient(to top, rgba(255,247,230,0.85) 0%, rgba(255,247,230,0.1) 60%, transparent 100%);
+        background: linear-gradient(to top, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.05) 60%, transparent 100%);
         z-index: 1;
         pointer-events: none;
     }
@@ -1038,11 +1098,14 @@ textarea {
 
     /* Fix sections */
     .section {
-        padding: 3rem 1rem;
+        padding: 4.5rem 1rem 3rem 1rem;
         min-height: auto;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin: 0 !important;
+        border: none !important;
+        scroll-margin-top: 65px;
     }
 
     /* Fix invitation card */
@@ -1101,7 +1164,7 @@ textarea {
         height: 250px;
         margin-bottom: 1rem;
     }
-
+    
     .map-info {
         width: 100%;
         padding: 1rem;
@@ -1136,44 +1199,57 @@ textarea {
         display: none !important;
     }
 
-    /* Invitation section background */
+        /* Invitation section background */
     #invitation.section {
-        margin-top: -1.6cm !important;
-        position: relative;
-        z-index: 10;
-        background-image: linear-gradient(rgba(255,247,230,0.92), rgba(255,247,230,0.92)), url('assets/img_back/citrons nappes carreaux bleu.jpg') !important;
-        background-size: cover !important;
-        background-position: center calc(0% - 1.6cm) !important;
-        background-repeat: no-repeat !important;
-    }
-    .invitation-card {
-        background: none !important;
-        box-shadow: none !important;
-        border-radius: 0 !important;
-        padding: 0 !important;
-        max-width: 100vw !important;
-        margin: 0 !important;
-        backdrop-filter: none !important;
-    }
-    .invitation-content {
-        padding: 0 !important;
-        background: none !important;
-        box-shadow: none !important;
-    }
+    margin-top: -1.6cm !important;
+    position: relative;
+    z-index: 10;
+    background-image: linear-gradient(rgba(255,255,255,0.80), rgba(255,255,255,0.80)), url('assets/img_back/citrons nappes carreaux bleu.jpg') !important;
+    background-size: cover !important;
+    background-position: center calc(0% - 1.6cm) !important;
+    background-repeat: no-repeat !important;
+    padding-bottom: 5rem !important; /* Extended padding to cover the white gap */
+    margin-bottom: -5rem !important; /* Negative margin to prevent actual spacing increase */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    min-height: calc(100vh - 60px) !important; /* Full viewport height minus menu bar */
+}
+.invitation-card {
+    background: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    backdrop-filter: none !important;
+}
+.invitation-content {
+    padding: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+/* Reduce spacing between Pasiphae and date for mobile */
+.invitation-content b:last-of-type {
+    margin-bottom: 0.4em !important;
+}
 
     /* RSVP section background */
     #rsvp.section {
-        background-image: linear-gradient(rgba(255,247,230,0.85), rgba(255,247,230,0.85)), url('assets/img_back/maisons mer.jpg');
+        background-image: linear-gradient(rgba(255,255,255,0.70), rgba(255,255,255,0.70)), url('assets/img_back/maillots.jpg');
         background-size: cover;
-        background-position: center;
+        background-position: center top !important;
         background-repeat: no-repeat;
+        padding-top: 4.5rem !important;
+        margin-top: 0 !important;
     }
     /* Adresse section background */
     #adresse.section {
-        background-image: linear-gradient(rgba(255,247,230,0.85), rgba(255,247,230,0.85)), url('assets/img_back/maillots.jpg');
+        background-image: linear-gradient(rgba(255,255,255,0.70), rgba(255,255,255,0.70)), url('assets/img_back/maisons mer.jpg');
         background-size: cover;
-        background-position: center;
+        background-position: center top !important;
         background-repeat: no-repeat;
+        padding-top: 4.5rem !important;
     }
     /* Dress Code section background (if needed, add a relevant image) */
     /* #dress-code.section {
@@ -1187,6 +1263,14 @@ textarea {
     h2 {
         font-size: 2rem;
         margin-bottom: 1.5rem;
+        margin-top: 0;
+        width: 100%;
+        padding-top: 1rem;
+    }
+    
+    /* Hide Invitation title on mobile */
+    #invitation h2 {
+        display: none;
     }
 
     /* Fix buttons */
@@ -1319,7 +1403,7 @@ textarea {
 
 .audio-toggle i {
     font-size: 20px;
-    color: var(--primary-color);
+    color: #0879B0;
 }
 
 /* Animation de scroll plus fluide */
@@ -1472,16 +1556,22 @@ label.required::after {
 
 /* Refined subtle stripes for Dress Code section */
 #dress-code {
-    background-color: var(--cream);
+    background-color: #ffffff;
     background-image:
-        linear-gradient(to bottom, var(--cream) 0%, rgba(255,247,230,0.01) 10%, rgba(255,247,230,0.01) 90%, var(--cream) 100%),
+        linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0.01) 10%, rgba(255,255,255,0.01) 90%, #ffffff 100%),
         repeating-linear-gradient(
-            to right,
+        to right,
             rgba(243,212,126,0.22) 0 30px,
-            transparent 30px 60px
-        );
+        transparent 30px 60px
+    );
     background-repeat: repeat;
     transition: background 0.6s ease;
+}
+
+@media (max-width: 768px) {
+    #dress-code.section, #photos.section {
+        padding-top: 4.5rem !important;
+    }
 }
 
 /* Magnifier Lens */
@@ -1524,14 +1614,27 @@ label.required::after {
 @media (max-width: 500px) {
   .invitation-card {
     max-width: 390px;
-    max-height: 700px;
-    padding: 1.2rem 0.7rem !important;
+    max-height: 100vh;
+    padding: 0.8rem 0.5rem !important;
     overflow-y: auto;
-    margin: 1rem auto !important;
+    margin: 0.5rem auto !important;
   }
   .invitation-content {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    width: 100% !important;
+  }
+  .invitation-content b {
+    font-size: 1em !important;
+    margin: 0.4em 0 !important;
+  }
+  .invitation-content .inv-block {
+    margin: 0.3em 0;
+  }
+  .invitation-content .inv-lastline {
+    width: 100% !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
   }
 }
 
@@ -1546,6 +1649,22 @@ label.required::after {
 /* Title with Adelia font */
 .adelia-font {
     font-family: 'Adelia', serif !important;
-    color: #0879B0 !important;
+    color: #0879B0 !important; /* Same blue as header */
     letter-spacing: 0.02em !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+}
+
+/* Girls' names with Adelia font */
+.invitation-content b {
+    font-family: 'Adelia', serif !important;
+    color: #0879B0 !important; /* Same blue as header */
+    letter-spacing: 0.02em !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-size: 1.2em !important;
+    display: block !important;
+    margin: 0.7em auto !important;
+    text-align: center !important;
+    width: 100% !important;
 }
