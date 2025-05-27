@@ -1682,3 +1682,41 @@ label.required::after {
     text-align: center !important;
     width: 100% !important;
 }
+
+/* Response date styling */
+.response-date {
+    text-align: center;
+    color: #0879B0;
+    font-size: 0.95rem;
+    font-style: italic;
+    margin: -1.8rem auto 0.5rem;
+    letter-spacing: 0.03em;
+}
+
+.response-note {
+    text-align: center;
+    color: #0879B0;
+    font-size: 0.85rem;
+    font-style: italic;
+    margin: 0 auto 2.2rem;
+    letter-spacing: 0.03em;
+}
+
+@media (max-width: 768px) {
+    .response-date,
+    .response-note {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    
+    .response-date {
+        margin-top: -1.2rem;
+        margin-bottom: 0.3rem;
+        font-size: 0.85rem;
+    }
+    
+    .response-note {
+        font-size: 0.75rem;
+        margin-bottom: 1.8rem;
+    }
+}
