@@ -15,6 +15,7 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     --gradient: linear-gradient(135deg, var(--terracotta), var(--lemon));
+    --header-height: 65px;
 }
 
 * {
@@ -36,8 +37,16 @@ body {
 }
 
 @media (max-width: 768px) {
-    html, body {
-        scroll-padding-top: 65px;
+    html {
+        scroll-padding-top: var(--header-height) !important;
+    }
+    
+    body {
+        scroll-padding-top: var(--header-height) !important;
+    }
+
+    .section {
+        scroll-margin-top: var(--header-height) !important;
     }
 }
 body::before {
@@ -89,7 +98,7 @@ h1, h2, h3 {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.8rem 1rem;
+    padding: 1rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -137,7 +146,7 @@ h1, h2, h3 {
     font-weight: 500;
     transition: color 0.3s cubic-bezier(0.19, 1, 0.22, 1);
     position: relative;
-    padding: 0.4rem 0;
+    padding: 0.5rem 0;
     opacity: 0.9;
     line-height: 1.2;
 }
@@ -564,8 +573,8 @@ h2.visible {
 
 .lightbox-content {
     position: relative;
-    max-width: 85%;
-    max-height: 85vh;
+    max-width: 95%;
+    max-height: 95vh;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     border-radius: 4px;
     overflow: hidden;
@@ -578,7 +587,7 @@ h2.visible {
     width: auto;
     height: auto;
     max-width: 100%;
-    max-height: 85vh;
+    max-height: 95vh;
     object-fit: contain;
     display: block;
     border-radius: 2px;
@@ -971,6 +980,14 @@ textarea {
         flex-direction: column !important;
         justify-content: center !important;
         min-height: calc(100vh - 65px) !important; /* Full viewport height minus mobile menu bar */
+        margin-top: -1.6cm !important;
+        position: relative;
+        z-index: 10;
+        background-image: linear-gradient(rgba(255,255,255,0.80), rgba(255,255,255,0.80)), url('assets/img_back/citrons nappes carreaux bleu.jpg') !important;
+        background-size: cover !important;
+        background-position: center calc(0% - 1.6cm) !important;
+        background-repeat: no-repeat !important;
+        scroll-margin-top: 1.6cm !important;
     }
     
     /* Hamburger menu visible, nav-links hidden by default */
@@ -1208,41 +1225,6 @@ textarea {
         display: none !important;
     }
 
-        /* Invitation section background */
-    #invitation.section {
-    margin-top: -1.6cm !important;
-    position: relative;
-    z-index: 10;
-    background-image: linear-gradient(rgba(255,255,255,0.80), rgba(255,255,255,0.80)), url('assets/img_back/citrons nappes carreaux bleu.jpg') !important;
-    background-size: cover !important;
-    background-position: center calc(0% - 1.6cm) !important;
-    background-repeat: no-repeat !important;
-    padding-bottom: 5rem !important; /* Extended padding to cover the white gap */
-    margin-bottom: -5rem !important; /* Negative margin to prevent actual spacing increase */
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    min-height: calc(100vh - 60px) !important; /* Full viewport height minus menu bar */
-}
-.invitation-card {
-    background: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    padding: 0 !important;
-    max-width: 100vw !important;
-    margin: 0 !important;
-    backdrop-filter: none !important;
-}
-.invitation-content {
-    padding: 0 !important;
-    background: none !important;
-    box-shadow: none !important;
-}
-/* Reduce spacing between Pasiphae and date for mobile */
-.invitation-content b:last-of-type {
-    margin-bottom: 0.4em !important;
-}
-
     /* RSVP section background */
     #rsvp.section {
         background-image: linear-gradient(rgba(255,255,255,0.70), rgba(255,255,255,0.70)), url('assets/img_back/maillots.jpg');
@@ -1267,6 +1249,15 @@ textarea {
         background-position: center;
         background-repeat: no-repeat;
     } */
+
+    /* Merci section background */
+    #merci.section {
+        background-image: linear-gradient(rgba(255,255,255,0.70), rgba(255,255,255,0.70)), url('assets/img_back/plage.jpg');
+        background-size: cover;
+        background-position: center top !important;
+        background-repeat: no-repeat;
+        padding-top: 4.5rem !important;
+    }
 
     /* Fix headings */
     h2 {
@@ -1296,7 +1287,7 @@ textarea {
         left: 0 !important;
         width: 0;
         height: 4px !important;
-        background: var(--primary-color) !important;
+        background: #FFFFFF !important;
         z-index: 2000 !important;
         transition: width 0.25s ease-out;
         display: block !important;
@@ -1457,7 +1448,7 @@ html {
     left: 0;
     width: 0;
     height: 4px;
-    background: var(--primary-color);
+    background: #FFFFFF;
     z-index: 2000;
     transition: width 0.25s ease-out;
 }
@@ -1554,7 +1545,7 @@ label.required::after {
 }
 
 /* Fullscreen Sections (minus nav) */
-#top, #invitation, #rsvp, #adresse {
+#top, #invitation, #rsvp, #adresse, #merci {
     /* at least full viewport minus nav, allowing growth */
     min-height: calc(100vh - 80px);
     display: flex;
@@ -1578,7 +1569,7 @@ label.required::after {
 }
 
 @media (max-width: 768px) {
-    #dress-code.section, #photos.section {
+    #dress-code.section, #photos.section, #merci.section {
         padding-top: 4.5rem !important;
     }
     

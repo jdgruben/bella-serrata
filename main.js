@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     const rsvpForm = document.getElementById('rsvpForm');
+    const merciForm = document.getElementById('merciForm');
     const sections = document.querySelectorAll('section');
     const galleryItems = document.querySelectorAll('.gallery-item');
     const headings = document.querySelectorAll('h2');
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Get the existing confirmation message element
     const confirmationMsg = document.getElementById('confirmation');
+    const merciConfirmationMsg = document.getElementById('merciConfirmation');
 
     // Create and append UI elements
     const progressBar = document.createElement('div');
@@ -273,6 +275,68 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     } else {
         console.warn('RSVP form or confirmation element not found in the document!');
+    }
+
+    // Merci Form Submission
+    if (merciForm && merciConfirmationMsg) {
+        console.log('Merci form found in the document');
+        merciForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            console.log('Merci form submitted, preparing to send email...');
+
+            const formData = new FormData(merciForm);
+            const data = {
+                nom: formData.get('merciNom'),
+                prenom: formData.get('merciPrenom'),
+                email: formData.get('merciEmail'),
+                message: formData.get('merciMessage')
+            };
+
+            console.log('Merci form data collected:', data);
+
+            try {
+                console.log('Sending Merci email to organizer...');
+                
+                // Envoyer l'email à l'organisateur
+                // IMPORTANT: Replace with your actual EmailJS service ID and template ID for the "Merci" form
+                const merciResponse = await emailjs.send(
+                    "service_8dunhrv", // Replace with your "Merci" service ID if different
+                    "template_merci", // REPLACE WITH YOUR ACTUAL "MERCI" TEMPLATE ID
+                    {
+                        from_name: `${data.prenom} ${data.nom}`,
+                        from_email: data.email,
+                        nom: data.nom,
+                        prenom: data.prenom,
+                        email: data.email,
+                        message: data.message || "Aucun message"
+                    }
+                );
+
+                console.log('Merci email sent successfully:', merciResponse);
+
+                merciForm.reset();
+                merciConfirmationMsg.style.display = 'block';
+                merciConfirmationMsg.textContent = "Votre message a bien été envoyé, merci !";
+                merciConfirmationMsg.style.color = "#0879B0"; 
+
+                // Scroll to center the confirmation message
+                merciConfirmationMsg.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+
+                // Hide confirmation message after a few seconds
+                setTimeout(() => {
+                    merciConfirmationMsg.style.display = 'none';
+                }, 7000);
+
+            } catch (error) {
+                console.error('Error sending Merci email:', error);
+                merciConfirmationMsg.textContent = "Une erreur s'est produite lors de l'envoi du message.";
+                merciConfirmationMsg.style.color = "red";
+                merciConfirmationMsg.style.display = 'block';
+            }
+        });
     }
 
     // Smooth Scroll with nav offset

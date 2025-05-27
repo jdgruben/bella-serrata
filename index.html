@@ -38,6 +38,7 @@
                 <li><a href="#rsvp">Réponse</a></li>
                 <li><a href="#adresse">Adresse</a></li>
                 <li><a href="#dress-code">Dress Code</a></li>
+                <li><a href="#merci">Merci</a></li>
                 <li><a href="#photos">Photos</a></li>
             </ul>
         </div>
@@ -166,8 +167,38 @@
         <div class="container">
             <h2 class="adelia-font">Dress Code</h2>
             <p class="dress-code-subtitle">No black tie - Be elegant</p>
-            <div id="gallery" class="gallery-grid" data-images="45"></div>
+            <div id="gallery" class="gallery-grid" data-images="54"></div>
             <p class="dress-code-quote">"Vivi e lascia vivere."</p>
+        </div>
+    </section>
+
+    <!-- Merci Section -->
+    <section id="merci" class="section">
+        <div class="section-side-image left" style="background-image: url('assets/img_back/plage.jpg')"></div>
+        <div class="container">
+            <h2 class="adelia-font">Merci</h2>
+            <form id="merciForm" class="rsvp-form">
+                <div class="form-group">
+                    <label for="merciPrenom" class="required">Prénom</label>
+                    <input type="text" id="merciPrenom" name="merciPrenom" required>
+                </div>
+                <div class="form-group">
+                    <label for="merciNom" class="required">Nom</label>
+                    <input type="text" id="merciNom" name="merciNom" required>
+                </div>
+                <div class="form-group">
+                    <label for="merciEmail" class="required">Email</label>
+                    <input type="email" id="merciEmail" name="merciEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="merciMessage" class="required">Message</label>
+                    <textarea id="merciMessage" name="merciMessage" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Envoyer</button>
+            </form>
+            <div id="merciConfirmation" class="confirmation-message" style="display: none;">
+                Votre message a bien été envoyé, merci !
+            </div>
         </div>
     </section>
 
