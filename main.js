@@ -651,13 +651,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Dynamically generate the dress-code gallery
     const galleryContainer = document.getElementById('gallery');
     if (galleryContainer) {
-        const count = parseInt(galleryContainer.dataset.images, 10) || 0;
-        for (let i = 1; i <= count; i++) {
+        galleryContainer.innerHTML = '';
+        const imageCount = 42; // There are 42 images, numbered 1.jpeg to 42.jpeg
+        for (let i = 1; i <= imageCount; i++) {
             const item = document.createElement('div');
             item.className = 'gallery-item';
             const img = document.createElement('img');
             img.src = `assets/gallery/${i}.jpeg`;
             img.alt = `Dress Code ${i}`;
+            img.loading = 'lazy';
+            img.onerror = function() {
+                item.style.display = 'none';
+            };
             item.appendChild(img);
             galleryContainer.appendChild(item);
         }
@@ -712,4 +717,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.addEventListener('click', tryPlayAudio);
         document.addEventListener('touchstart', tryPlayAudio);
     }
+
+    // Fix 100vh on mobile browsers (iOS/Android) for .hero
+    window.addEventListener('DOMContentLoaded', function() {
+      function setVhVariable() {
+        var vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', vh + 'px');
+      }
+      setVhVariable();
+      window.addEventListener('resize', setVhVariable);
+    });
 });
