@@ -296,19 +296,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
             try {
                 console.log('Sending Merci email to organizer...');
-                
-                // Envoyer l'email à l'organisateur
-                // IMPORTANT: Replace with your actual EmailJS service ID and template ID for the "Merci" form
+                // Envoi du message de remerciement à labellaserrata@gmail.com via EmailJS
                 const merciResponse = await emailjs.send(
-                    "service_8dunhrv", // Replace with your "Merci" service ID if different
-                    "template_merci", // REPLACE WITH YOUR ACTUAL "MERCI" TEMPLATE ID
+                    "service_8dunhrv",
+                    "template_pgnk8ti",
                     {
-                        from_name: `${data.prenom} ${data.nom}`,
-                        from_email: data.email,
-                        nom: data.nom,
-                        prenom: data.prenom,
+                        name: `${data.prenom} ${data.nom}`,
                         email: data.email,
-                        message: data.message || "Aucun message"
+                        message: data.message || "Aucun message",
+                        title: "Remerciement",
+                        time: new Date().toLocaleString()
                     }
                 );
 
@@ -317,7 +314,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 merciForm.reset();
                 merciConfirmationMsg.style.display = 'block';
                 merciConfirmationMsg.textContent = "Votre message a bien été envoyé, merci !";
-                merciConfirmationMsg.style.color = "#0879B0"; 
+                merciConfirmationMsg.style.color = "#0879B0";
 
                 // Scroll to center the confirmation message
                 merciConfirmationMsg.scrollIntoView({
