@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             } catch (error) {
                 console.error('Error sending Merci email:', error);
-                merciConfirmationMsg.textContent = "Une erreur s'est produite lors de l'envoi du message.";
+                merciConfirmationMsg.textContent = "Une erreur s'est produite lors de l'envoi du message : " + (error.text || error.message || error);
                 merciConfirmationMsg.style.color = "red";
                 merciConfirmationMsg.style.display = 'block';
             }
