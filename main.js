@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Envoi du message de remerciement à labellaserrata@gmail.com via EmailJS
                 const merciResponse = await emailjs.send(
                     "service_8dunhrv",
-                    "template_pgnk8ti",
+                    "template_pzf39l9",
                     {
                         name: `${data.prenom} ${data.nom}`,
                         email: data.email,
